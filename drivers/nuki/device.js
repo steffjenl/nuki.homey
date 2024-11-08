@@ -1,6 +1,6 @@
 'use strict';
 
-const NukiDevice = require('../../lib/NukiDevice.js');
+const NukiDevice = require('../../lib/NukiDevice');
 const EventEmitter = require('events');
 
 // Actions allowed on an Opener device as defined in Nuki documentation.
@@ -34,7 +34,7 @@ class SmartLockDevice extends NukiDevice {
       this.addCapability('alarm_contact');
     }
     // Devices paired with version < 3.1.0 do not have the deviceType property
-    // in Homey Data object thus, the deviceType (needed for Nuki commands) 
+    // in Homey Data object thus, the deviceType (needed for Nuki commands)
     // is evaluated by following variable.
     const evDeviceType = this.getData().deviceType === undefined ? 0 : this.getData().deviceType;
 
@@ -135,7 +135,7 @@ class SmartLockDevice extends NukiDevice {
             const flow = this.homey.flow;
             const unlatchingStr = this.homey.__('util.unlatching');
             const prevLockstate = this.getCapabilityValue('lockstate');
-            
+
             this.setCapabilityValue('nuki_state', unlatchingStr);
             this.setCapabilityValue('lockstate', unlatchingStr).then(async () => {
               flow.getDeviceTriggerCard('smartlock_nuki_state_changed').trigger(this, { previous_state: prevLockstate }, {});
@@ -162,7 +162,7 @@ class SmartLockDevice extends NukiDevice {
 
   async smartLockActionFlowCard(action, what_if_action_in_progress) {
     // Devices paired with version < 3.1.0 do not have the deviceType property
-    // in Homey Data object thus, the deviceType (needed for Nuki commands) 
+    // in Homey Data object thus, the deviceType (needed for Nuki commands)
     // is evaluated by following variable.
     const evDeviceType = this.getData().deviceType === undefined ? 0 : this.getData().deviceType;
     try {
@@ -264,7 +264,7 @@ class SmartLockDevice extends NukiDevice {
               flow.getDeviceTriggerCard('nuki_state_changed').trigger(this, { previous_state: prevLockstate }, {});
             })
             this.setCapabilityValue('locked', false);
-            // Safety timer that can automatically restore the current status 
+            // Safety timer that can automatically restore the current status
             //  after a while, if the event from Opener is missed.
             this._openingTimer = setTimeout(() => this._restoreStatusBeforeOpening(prevArg.previous_state), 24000);
             await this.progressingActionDone();
@@ -273,7 +273,7 @@ class SmartLockDevice extends NukiDevice {
           break;
         case ACTION_LOCK_N_GO:
           {
-            this.log('Perform Lock ’n’ Go');
+            this.log('Perform Lock ï¿½nï¿½ Go');
             this.progressingAction = ACTION_LOCK_N_GO;
             // It seems that, even if result.success is false, the action is
             //  performed correctly by Nuki. For that resons the "result" object
@@ -283,19 +283,19 @@ class SmartLockDevice extends NukiDevice {
               ['deviceType', evDeviceType],
               ['action', ACTION_LOCK_N_GO]
             ], 60000);
-            this.log('Lock ’n’ Go successfully issued');
-            // Wait until the Smart Lock is not locked (final state of Lock ’n’ Go action).
+            this.log('Lock ï¿½nï¿½ Go successfully issued');
+            // Wait until the Smart Lock is not locked (final state of Lock ï¿½nï¿½ Go action).
             if (this.getCapabilityValue('lockstate') != this.homey.__('util.locked')) {
               await new Promise(resolve => this._unlockStateEvent.once('done', resolve));
             }
-            this.log('Lock ’n’ Go completed');
+            this.log('Lock ï¿½nï¿½ Go completed');
             this.progressingAction = 0;
             return Promise.resolve();
           }
           break;
         case ACTION_LOCK_N_GO_WITH_UNLATCH:
           {
-            this.log('Perform Lock ’n’ Go with unlacth');
+            this.log('Perform Lock ï¿½nï¿½ Go with unlacth');
             this.progressingAction = ACTION_LOCK_N_GO_WITH_UNLATCH;
             // It seems that, even if result.success is false, the action is
             //  performed correctly by Nuki. For that resons the "result" object
@@ -305,12 +305,12 @@ class SmartLockDevice extends NukiDevice {
               ['deviceType', evDeviceType],
               ['action', ACTION_LOCK_N_GO_WITH_UNLATCH]
             ], 60000);
-            this.log('Lock ’n’ Go with unlatch successfully issued');
-            // Wait until the Smart Lock is not locked (final state of Lock ’n’ Go action).
+            this.log('Lock ï¿½nï¿½ Go with unlatch successfully issued');
+            // Wait until the Smart Lock is not locked (final state of Lock ï¿½nï¿½ Go action).
             if (this.getCapabilityValue('lockstate') != this.homey.__('util.locked')) {
               await new Promise(resolve => this._unlockStateEvent.once('done', resolve));
             }
-            this.log('Lock ’n’ Go with unlatch completed');
+            this.log('Lock ï¿½nï¿½ Go with unlatch completed');
             this.progressingAction = 0;
             return Promise.resolve();
           }
@@ -326,7 +326,7 @@ class SmartLockDevice extends NukiDevice {
   // HELPER FUNCTIONS
   updateCapabilitiesValue(newState) {
     super.updateCapabilitiesValue(newState);
-    let lockstate; 
+    let lockstate;
     let nukiState;
     let locked;
 
@@ -390,6 +390,8 @@ class SmartLockDevice extends NukiDevice {
       // Update capability lockstate. when the async SetCapabilityValue()
       // function has been completed, trigger flow cards.
       this.setCapabilityValue('lockstate', lockstate).then( async() => {
+        this.log(lockstate);
+        this.log(prevLockstate);
         // Trigger smartlock_nuki_state_changed and deprecated nuki_state_changed.
         flow.getDeviceTriggerCard('smartlock_nuki_state_changed').trigger(this, { previous_state: prevLockstate }, {})
         flow.getDeviceTriggerCard('nuki_state_changed').trigger(this, { previous_state: prevLockstate }, {})
@@ -397,7 +399,7 @@ class SmartLockDevice extends NukiDevice {
       if (lockstate == this.homey.__('util.locked')) {
         this._unlockStateEvent.emit('done');
       }
-      // Update capability nuki_state. 
+      // Update capability nuki_state.
       nukiState = lockstate;
       if (lockstate != this.getCapabilityValue('nuki_state')) {
         this.setCapabilityValue('nuki_state', nukiState);
@@ -443,7 +445,7 @@ class SmartLockDevice extends NukiDevice {
     if (locked != this.getCapabilityValue('locked')) {
       this.setCapabilityValue('locked', locked);
     }
-    // Update capability nuki_state. 
+    // Update capability nuki_state.
     const nukiState = baseState;
     this.setCapabilityValue('nuki_state', nukiState);
     // Update capability lockstate and trigger smartlock_nuki_state_changed flow card

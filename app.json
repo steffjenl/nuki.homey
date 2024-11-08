@@ -101,6 +101,14 @@
           "it": "L'allarme della batteria Keypad è stato disattivato",
           "es": "La alarma de la batería Keypad se ha desactivado"
         },
+        "titleFormatted": {
+          "en": "The Keypad battery alarm turned off for [[device]]",
+          "nl": "De Keypad batterijwaarschuwing gaat uit voor [[device]]",
+          "de": "Der Keypadbatterie-Alarm ist ausgegangen für [[device]]",
+          "fr": "L'alarme batterie Keypad s'est désactivée pour [[device]]",
+          "it": "L'allarme della batteria Keypad è stato disattivato per [[device]]",
+          "es": "La alarma de la batería Keypad se ha desactivado para [[device]]"
+        },
         "filter": {
           "capabilities": "alarm_battery_keypad"
         },
@@ -122,6 +130,14 @@
           "it": "L'allarme della batteria Keypad è stato attivato",
           "es": "La alarma de la batería Keypad se ha activado"
         },
+        "titleFormatted": {
+          "en": "The Keypad battery alarm turned on for [[device]]",
+          "nl": "De Keypad batterijwaarschuwing gaat aan voor [[device]]",
+          "de": "Der Keypadbatterie-Alarm ist angegangen für [[device]]",
+          "fr": "L'alarme batterie Keypad s'est activée pour [[device]]",
+          "it": "L'allarme della batteria Keypad è stato attivato per [[device]]",
+          "es": "La alarma de la batería Keypad se ha activado para [[device]]"
+        },
         "filter": {
           "capabilities": "alarm_battery_keypad"
         },
@@ -141,6 +157,12 @@
           "nl": "Nuki status gewijzigd",
           "de": "Nuki Status hat sich geändert",
           "it": "Lo stato Nuki è cambiato"
+        },
+        "titleFormatted": {
+          "en": "Nuki state changed for [[device]]",
+          "nl": "Nuki status gewijzigd voor [[device]]",
+          "de": "Nuki Status hat sich geändert für [[device]]",
+          "it": "Stato Nuki cambiato per [[device]]"
         },
         "hint": {
           "en": "State has changed. The tag \"State\" contains the updated value. The local tag \"Previous state\" contains previous value.",
@@ -421,6 +443,14 @@
           "fr": "L'alarme batterie Keypad est !{{en marche|arrêtée}}",
           "it": "L'allarme della batteria Keypad è !{{acceso|spento}}",
           "es": "La alarma de la batería Keypad está !{{activada|desactivada}}"
+        },
+        "titleFormatted": {
+          "en": "The Keypad battery alarm is !{{on|off}} for [[device]]",
+          "nl": "De Keypad batterijwaarschuwing is !{{aan|uit}} voor [[device]]",
+          "de": "Der Keypadbatterie-Alarm ist !{{an|aus}} für [[device]]",
+          "fr": "L'alarme batterie Keypad est !{{en marche|arrêtée}} pour [[device]]",
+          "it": "L'allarme della batteria Keypad è !{{acceso|spento}} per [[device]]",
+          "es": "La alarma de la batería Keypad está !{{activada|desactivada}} para [[device]]"
         },
         "filter": {
           "capabilities": "alarm_battery_keypad"

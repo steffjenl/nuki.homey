@@ -6,6 +6,12 @@
     "de": "Nuki Status hat sich geändert",
     "it": "Lo stato Nuki è cambiato"
   },
+  "titleFormatted": {
+    "en": "Nuki state changed for [[device]]",
+    "nl": "Nuki status gewijzigd voor [[device]]",
+    "de": "Nuki Status hat sich geändert für [[device]]",
+    "it": "Stato Nuki cambiato per [[device]]"
+  },
   "hint": {
     "en": "State has changed. The tag \"State\" contains the updated value. The local tag \"Previous state\" contains previous value.",
     "nl": "Status is veranderd. De tag \"Status\" bevat de bijgewerkte waarde. De lokale tag \"Vorige status\" bevat de vorige waarde.",

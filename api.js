@@ -4,7 +4,7 @@
 module.exports = {
   async nukiCallbacks({homey, body}) {
     try {
-      const NukiBridge = require('../../lib/NukiBridge.js');
+      const NukiBridge = require('./lib/NukiBridge');
       NukiBridge.onCallback(body);
       return { success: true };
     }

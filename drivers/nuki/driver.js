@@ -1,6 +1,6 @@
 'use strict';
 
-const NukiDriver = require('../../lib/NukiDriver.js');
+const NukiDriver = require('../../lib/NukiDriver');
 
 
 class SmartLockDriver extends NukiDriver {
@@ -10,7 +10,7 @@ class SmartLockDriver extends NukiDriver {
   }
 
   onInit() {
-    
+
   }
 
 }

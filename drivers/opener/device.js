@@ -1,6 +1,6 @@
 'use strict';
 
-const NukiDevice = require('../../lib/NukiDevice.js');
+const NukiDevice = require('../../lib/NukiDevice');
 
 
 // Actions allowed on an Opener device as defined in Nuki documentation.
@@ -142,7 +142,7 @@ class OpenerDevice extends NukiDevice {
               flow.getDeviceTriggerCard('nuki_state_changed').trigger(this, { previous_state: prevOpenerstate }, {});
             })
             this.setCapabilityValue('locked', false);
-            // Safety timer that can automatically restore the current status 
+            // Safety timer that can automatically restore the current status
             //  after a while, if the event from Opener is missed.
             this._openingTimer = setTimeout(() => this._restoreStatusBeforeOpening(prevOpenerstate), 16000);
             return Promise.resolve();
@@ -361,7 +361,7 @@ class OpenerDevice extends NukiDevice {
               flow.getDeviceTriggerCard('nuki_state_changed').trigger(this, { previous_state: prevOpenerstate }, {});
             })
             this.setCapabilityValue('locked', false);
-            // Safety timer that can automatically restore the current status 
+            // Safety timer that can automatically restore the current status
             //  after a while, if the event from Opener is missed.
             this._openingTimer = setTimeout(() => this._restoreStatusBeforeOpening(prevOpenerstate), 16000);
             await this.progressingActionDone();

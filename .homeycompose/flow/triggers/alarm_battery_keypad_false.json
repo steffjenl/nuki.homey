@@ -7,6 +7,14 @@
     "it": "L'allarme della batteria Keypad \u00E8 stato disattivato",
     "es": "La alarma de la bater\u00EDa Keypad se ha desactivado"
   },
+  "titleFormatted": {
+    "en": "The Keypad battery alarm turned off for [[device]]",
+    "nl": "De Keypad batterijwaarschuwing gaat uit voor [[device]]",
+    "de": "Der Keypadbatterie-Alarm ist ausgegangen f\u00FCr [[device]]",
+    "fr": "L'alarme batterie Keypad s'est d\u00E9sactiv\u00E9e pour [[device]]",
+    "it": "L'allarme della batteria Keypad \u00E8 stato disattivato per [[device]]",
+    "es": "La alarma de la bater\u00EDa Keypad se ha desactivado para [[device]]"
+  },
   "filter": {
     "capabilities": "alarm_battery_keypad"
   },
